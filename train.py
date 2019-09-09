@@ -47,7 +47,7 @@ def get_args():
 
     return args
 
-
+# [注]：论文中用的multi step方法，这里使用更加实用的PolyDecay方法！
 class PolyDecay:
 
     def __init__(self, initial_lr, power, n_epochs):

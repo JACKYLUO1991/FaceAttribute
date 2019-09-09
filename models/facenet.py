@@ -228,7 +228,11 @@ def InceptionResNetV1(input_shape=(160, 160, 3),
 
 def facenet_resnet(nb_class=101, embdding=256, is_train=False, weights=None):
     """
-    Facenet features extract
+    nb_class: 年龄评估分类段数
+    embdding： 嵌入空间维度
+    is_train: 训练or测试
+    weights: 预训练模型
+    @Function: Facenet features extract
     """
     base_model = InceptionResNetV1()
     
@@ -249,7 +253,7 @@ def facenet_resnet(nb_class=101, embdding=256, is_train=False, weights=None):
                    kernel_initializer="he_normal")(fc_a)
 
     fc_g = Dense(embdding, activation='relu', name='fc_g')(x)
-    pred_g = Dense(2, activation='softmax', name='pred_g',
+    pred_g = Dense(2, activation='sigmoid', name='pred_g',
                    kernel_initializer="he_normal")(fc_g)
     
     fc_e = Dense(embdding, activation='relu', name='fc_e')(x)
