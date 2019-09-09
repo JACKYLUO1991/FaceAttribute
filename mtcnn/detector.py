@@ -158,7 +158,7 @@ def detect_faces(image, scales=[224, 384]):
     if np.round(im_scale * im_size_max) > max_size:
         im_scale = float(max_size) / float(im_size_max)
 
-    bounding_boxes, landmarks = detector.detect(image, threshold=0.9, scales=[im_scale])
+    bounding_boxes, landmarks = detector.detect(image, threshold=0.4, scales=[im_scale])
 
     return bounding_boxes, landmarks
 
