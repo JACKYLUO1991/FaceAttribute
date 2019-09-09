@@ -101,8 +101,9 @@ def main():
     model.compile(
         optimizer=optimizers.SGD(
             lr=lr, momentum=0.9, decay=5e-4, nesterov=False),
-        loss={'pred_g': "categorical_crossentropy",
+        loss={'pred_g': focal_loss(alpha=.4, gamma=2),
               'pred_a': mae, "pred_e": "categorical_crossentropy"},
+        loss_weights={'pred_g': 0.2, 'pred_a': 1, 'pred_e': 0.4}, 
         metrics={'pred_g': 'accuracy',
                  'pred_a': mae, 'pred_e': 'accuracy'})
 

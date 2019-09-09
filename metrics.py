@@ -1,7 +1,7 @@
 from keras import backend as K
 import tensorflow as tf
 
-# 101 or 71 from UTKFace dataset to megaage_asian dataset
+# 117/101/71 UTKFace dataset/other datasets/megaage_asian dataset
 k = 71
 
 
@@ -19,7 +19,7 @@ def focal_loss_multi(gamma=2.):
     return focal_loss_fixed
 
 
-def focal_loss(gamma=2, alpha=0.75):
+def focal_loss(gamma=2, alpha=0.4):
     """Focal loss"""
     def focal_loss_fixed(y_true, y_pred):
         pt_1 = tf.where(tf.equal(y_true, 1), y_pred, tf.ones_like(y_pred))
